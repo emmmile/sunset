@@ -10,7 +10,7 @@ function request() {
 
 	xmlhttp.onreadystatechange = function() {
 	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	        document.getElementById("another").innerHTML = xmlhttp.responseText;
+	        process(xmlhttp.responseText);
 	    }
 	}
 	xmlhttp.open("GET", "js/example.json", true);
@@ -18,4 +18,14 @@ function request() {
 
 	// temporary
 	getLocation();
+}
+
+function process(responseText) {
+	object = JSON.parse(responseText);
+
+	var x = document.getElementById("another");
+	
+	x.innerHTML = "Summary: " + object.summary + 
+	"Cloud cover: " + object.cloudCover +
+	"Humidity: " + object.humidity;
 }
