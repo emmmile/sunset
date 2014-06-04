@@ -21,6 +21,7 @@ html, body {
   color: #000;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
+  text-align:center;
 }
 
 body {
@@ -36,7 +37,7 @@ h1.title {
   font-weight: bold;
   margin: 0;
   display: block;
-  float: left; }
+  float: center; }
 
 /*.scores-container {
   float: right;
@@ -108,7 +109,7 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 800px;
+  width: 600px;
   margin: 0 auto; }
 
 .restart-button {
@@ -125,7 +126,20 @@ hr {
   float: right; }
 
 .explanation {
-  margin-top: 50px; }
+  margin-top: 50px;
+}
+
+.output {
+  padding-top: 10px;
+  margin-top: 40px;
+  border: 5px solid black;
+  border-radius: 10px;
+}
+
+#fancy-output strong {
+  font-size: 64px;
+}
+
 
 @media screen and (max-width: 520px) {
   html, body {
@@ -140,7 +154,7 @@ hr {
     margin-top: 15px; }
 
   .container {
-    width: 280px;
+    width: 300px;
     margin: 0 auto; }
 
   .restart-button {
