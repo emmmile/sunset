@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sunset</title>
+
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <!--link rel="shortcut icon" href="favicon.ico"-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body onload="getLocation()" >
+  <div class="background">
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">Sunset</h1>
+      <!--div class="scores-container">
+        <div class="score-container">0</div>
+        <div class="best-container">0</div>
+      </div-->
+    </div>
+
+    <!--div class="above-game">
+      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <a class="restart-button">New Game</a>
+    </div-->
+    <div id="output-container">
+    </div>
+
+
+    <hr>
+    <p class="explanation">
+      <strong class="important">You need help about when going out for amazing pictures?<br>
+      </strong> Use this app to <strong>know</strong> when it's time to go.
+    </p>
+  </div>
+
+  </div>
+
+  <script src="js/geolocation.js"></script>
+</body>
+</html>
