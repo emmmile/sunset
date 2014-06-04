@@ -11,9 +11,9 @@ function getLocation() {
 function showPosition(position) {
     x.innerHTML = 
     "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude;
-    "<br>Accuracy: " + position.coords.accuracy;
-    "<br>Altitude: " + position.coords.altitude;
+    "<br>Longitude: " + position.coords.longitude +
+    "<br>Accuracy: " + position.coords.accuracy +
+    "<br>Altitude: " + position.coords.altitude +
     "<br>Altitude accuracy: " + position.coords.altitudeAccuracy;
 }
 
