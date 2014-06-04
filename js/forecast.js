@@ -24,8 +24,8 @@ function process(responseText) {
 	object = JSON.parse(responseText);
 
 	var x = document.getElementById("another");
-	
-	x.innerHTML = "Summary: " + object.summary + 
-	"Cloud cover: " + object.cloudCover +
-	"Humidity: " + object.humidity;
+
+	x.innerHTML = "Summary: " + object['currently']['summary'] + "<br>" +
+	"Cloud cover: " + object['currently']['cloudCover'] + "<br>" +
+	"Humidity: " + object['currently']['humidity'];
 }
