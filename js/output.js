@@ -1,5 +1,5 @@
 
-function output(situation) {
+function output() {
 	var el = document.getElementById("weather");
 
 	el.innerHTML = "Summary: " + data['currently']['summary'] + 

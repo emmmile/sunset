@@ -1,3 +1,5 @@
+var data;
+
 var conditions = [
 	"awful"
 	"bad"
@@ -5,6 +7,8 @@ var conditions = [
 	"good"
 	"excellent"
 ];
+
+var situation;
 
 function request(location) {
 	var uri = "js/example.json";
@@ -26,10 +30,7 @@ function request(location) {
 	request.send();
 
 	if ( request.status == 200 ) {
-		return request.responseText;
-	} else {
-		// TODO
-		return "error";
+		data = request.responseText;
 	}
 }
 
@@ -49,7 +50,7 @@ function humidityFunction(humidity) {
 	return 1.0;
 }
 
-function process(data) {
+function process() {
 	data = JSON.parse(data);
 
 	score = 0.0;
@@ -64,5 +65,5 @@ function process(data) {
 	score /= features;
 	index = (score * conditions.length) | 0;
 
-	return conditions[index];
+	situation = conditions[index];
 }
