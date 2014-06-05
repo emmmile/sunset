@@ -47,8 +47,8 @@ function humidityFunction(humidity) {
 	return 1.0;
 }
 
-function process(data) {
-	data = JSON.parse(data);
+function process(responseText) {
+	data = JSON.parse(responseText);
 
 	score = 0.0;
 
@@ -62,5 +62,5 @@ function process(data) {
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;
 
-	output(conditions[index]);
+	output(data, conditions[index]);
 }
