@@ -18,8 +18,8 @@ function showPosition(position) {
     "<br>Longitude: " + position.coords.longitude +
     "<br>Accuracy: " + position.coords.accuracy;
 
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
+    window.latitude = position.coords.latitude;
+    window.longitude = position.coords.longitude;
 }
 
 function showError(error) {
