@@ -37,6 +37,23 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred."
             break;
     }
+
+    x.innerHTML += "<br>" + "So maybe you want to enter something manually:" +
+    "<form id=\"locationForm\" action=\"\" method=\"post\">" +
+      "<input type=\"text\" id=\"userLocation\">" +
+      "<input type=\"submit\" onClick=\"return resolveUserLocation()\">" +
+    "</form>";
+    // http://maps.google.com/maps/api/geocode/json?address=Lucca&sensor=false
+}
+
+function resolveUserLocation() {
+    var userLocation = $('#userLocation').val()
+    alert("You entered '" + userLocation + "'. I'm working on it.");
+
+
+    /*$.get('maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
+        alert(data);
+    });*/
 }
 
 window.onload = function () { getLocation(); }
