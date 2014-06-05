@@ -1,11 +1,12 @@
 var x = document.getElementById("location");
+var errorMessage;
 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(handlePosition,showError);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-        // TODO: get the location in some other way, e.g. from a text box
+        errorMessage = "Geolocation is not supported by this browser.";
+        getLocationFromUser();
     }
 }
 
@@ -23,33 +24,33 @@ function handlePosition(position) {
 }
 
 function showError(error) {
-    var message;
 
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            message = "User denied the request for Geolocation."
+            errorMessage = "User denied the request for Geolocation."
             break;
         case error.POSITION_UNAVAILABLE:
-            message = "Location information is unavailable."
+            errorMessage = "Location information is unavailable."
             break;
         case error.TIMEOUT:
-            message = "The request to get user location timed out."
+            errorMessage = "The request to get user location timed out."
             break;
         case error.UNKNOWN_ERROR:
-            message = "An unknown error occurred."
+            errorMessage = "An unknown error occurred."
             break;
     }
 
-    document.getElementById('user-location-label').innerHTML = 'There was an error getting the location. Enter something yourself:';
-    document.getElementById('user-location-container').style.display= 'block';
-
-    // http://maps.google.com/maps/api/geocode/json?address=Lucca&sensor=false
+    getLocationFromUser();
 }
 
-function resolveUserLocation() {
-    var userLocation = $('#user-location').val();
-    alert("You entered '" + userLocation + "'. I'm working on it.");
+function getLocationFromUser() {
+    document.getElementById('user-location-label').innerHTML = 'There was an error getting the location. Enter something yourself:';
+    document.getElementById('user-location-container').style.display= 'block';
+}
 
+function resolveLocationFromUser() {
+    var userLocation = $('#user-location').val();
+    alert("You entered \"" + userLocation + "\". I'm working on it.");
 
     /*$.get('maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
         alert(data);
