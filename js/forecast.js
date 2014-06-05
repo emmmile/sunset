@@ -11,8 +11,8 @@ function request(latitude, longitude) {
 	//var uri = "js/example.json";
 	document.getElementById("debug").innerHTML += uri;
 
-	$.getJSON('https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/' + latitude + ',' + longitude + "?callback=?", function(data1) {
-        console.log(data1.currently.summary);
+	$.getJSON('https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/' + latitude + ',' + longitude + "?callback=?", function(data) {
+    	process(data);
     });
 }
 
@@ -32,16 +32,15 @@ function humidityFunction(humidity) {
 	return 1.0;
 }
 
-function process(responseText) {
-	data = JSON.parse(responseText);
-	alert(data['currently']['cloudCover']);
+function process(data) {
+	alert(data);
 
 	score = 0.0;
 
 	// define a set of features, each feature weights at most 1
 	features = 2;
-	cloudCover = data['currently']['cloudCover'];
-	humidity = data['currently']['humidity'];
+	cloudCover = data.currently.cloudCover;
+	humidity = data.currently.humidity;
 
 	score += cloudCoverFunction(cloudCover);
 	score += humidityFunction(humidity);
