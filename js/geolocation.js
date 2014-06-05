@@ -1,10 +1,11 @@
-var x = document.getElementById("output-container");
+var x = document.getElementById("location");
 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition,showError);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
+        // TODO: get the location in some other way, e.g. from a text box
     }
 }
 

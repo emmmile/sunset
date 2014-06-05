@@ -129,14 +129,14 @@ hr {
   margin-top: 50px;
 }
 
-.output {
+#summary {
   padding-top: 10px;
   margin-top: 40px;
   border: 5px solid black;
   border-radius: 10px;
 }
 
-#fancy-output strong {
+#summary strong {
   font-size: 64px;
 }
 
