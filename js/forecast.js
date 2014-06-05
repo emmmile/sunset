@@ -7,6 +7,7 @@ var conditions = [
 ];
 
 function request(latitude, longitude) {
+	alert(latitude);
 	var uri = "api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
 
 	var request;
