@@ -4,7 +4,7 @@ function output(data, situation) {
 	el.innerHTML = "Summary: " + data.currently.summary + 
 	"<br>Cloud cover: " + data.currently.cloudCover + 
 	"<br>Humidity: " + data.currently.humidity +
-	"<br>Temperature: " + data.currently.temperature -32.0 * 5.0 / 9.0;
+	"<br>Temperature: " + (data.currently.temperature - 32 * 5 / 9) + "°C";
 
 	el = document.getElementById("summary");
 	el.innerHTML = "Conditions are<br><strong class=\"important\">" + situation + ".</strong><br>";
