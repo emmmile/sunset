@@ -12,7 +12,6 @@ var situation;
 
 function request() {
 	var uri = "api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + window.latitude + "," + window.longitude;
-	alert( uri );
 
 	var request;
 	if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -28,7 +27,6 @@ function request() {
 	}*/
 
 	request.open("GET", uri, false); // false = sync, true = async
-	request.send();
 
 	alert( request.responseText );
 	if ( request.status == 200 ) {
