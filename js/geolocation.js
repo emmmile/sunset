@@ -7,8 +7,6 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
         // TODO: get the location in some other way, e.g. from a text box
     }
-
-    request(10.0,10.0);
 }
 
 function handlePosition(position) {

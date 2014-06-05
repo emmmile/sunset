@@ -7,8 +7,8 @@ var conditions = [
 ];
 
 function request(latitude, longitude) {
-	var uri = "https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
-	//var uri = "https://raw.githubusercontent.com/emmmile/sunset/gh-pages/js/example.json";
+	//var uri = "https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
+	var uri = "js/example.json";
 	document.getElementById("debug").innerHTML += uri;
 
 	jQuery.get(uri, function( data ) {
