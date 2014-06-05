@@ -65,5 +65,5 @@ function process() {
 	score /= features;
 	index = (score * conditions.length) | 0;
 
-	situation = conditions[index];
+	situation = "good";
 }
