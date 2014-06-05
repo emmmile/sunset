@@ -13,7 +13,7 @@ function getLocation() {
 function handlePosition(position) {
 	a = position.coords.accuracy;
 	accuracyString = (a >= 1000) ? "km" : "m";
-	a = (a >= 1000) ? a / 1000 : a;
+	a = Math.round(((a >= 1000) ? a / 1000 : a)*100) / 100;
 
     x.innerHTML = 
     "Latitude: " + position.coords.latitude +
