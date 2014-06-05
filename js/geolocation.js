@@ -10,10 +10,14 @@ function getLocation() {
 }
 
 function handlePosition(position) {
+	a = position.coords.accuracy;
+	accuracyString = (a >= 1000) ? " km" : " m";
+	a = (a >= 1000) ? a / 1000 : a;
+
     x.innerHTML = 
     "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude +
-    "<br>Accuracy: " + position.coords.accuracy;
+    "<br>Accuracy: " + a + accuracyString;
 
     request(position.coords.latitude, position.coords.longitude);
 }
