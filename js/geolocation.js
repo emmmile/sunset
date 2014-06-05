@@ -20,7 +20,6 @@ function showPosition(position) {
 
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    alert(latitude);
 }
 
 function showError(error) {
