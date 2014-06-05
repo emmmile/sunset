@@ -6,7 +6,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(handlePosition,showError);
     } else {
         errorMessage = "Geolocation is not supported by this browser.";
-        getLocationFromUser();
+        getLocationFromUser('The location seems to be unavailable. Enter something yourself:');
     }
 }
 
@@ -19,6 +19,8 @@ function handlePosition(position) {
     "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude +
     "<br>Accuracy: " + a + accuracyString;
+
+    if ( accuracy > 20000 ); // ask to the user
 
     request(position.coords.latitude, position.coords.longitude);
 }
@@ -40,11 +42,11 @@ function showError(error) {
             break;
     }
 
-    getLocationFromUser();
+    getLocationFromUser('There was an error getting the location. Enter something yourself:');
 }
 
-function getLocationFromUser() {
-    document.getElementById('user-location-label').innerHTML = 'There was an error getting the location. Enter something yourself:';
+function getLocationFromUser(message) {
+    document.getElementById('user-location-label').innerHTML = message;
     document.getElementById('user-location-container').style.display= 'block';
 }
 
@@ -52,9 +54,20 @@ function resolveLocationFromUser() {
     var userLocation = $('#user-location').val();
     alert("You entered \"" + userLocation + "\". I'm working on it.");
 
-    /*$.get('maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
-        alert(data);
-    });*/
+    //gapi.client.setApiKey(YOUR API KEY);
+    geocoder = new google.maps.Geocoder();
+
+    gecoder.geocode({'address': userLocation}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            alert(results[0].geometry.location);
+        } else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+
+    // $.get('https://maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
+    //     alert(data);
+    // });
 }
 
 window.onload = function () { getLocation(); }
