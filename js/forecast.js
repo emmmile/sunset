@@ -26,6 +26,8 @@ function request(latitude, longitude) {
 
 	if ( request.status == 200 ) {
 		process(request.responseText);
+	} else {
+		document.getElementById("weather").innerHTML = request.responseText;
 	}
 }
 

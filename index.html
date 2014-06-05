@@ -15,35 +15,37 @@
 </head>
 <body onload="getLocation()" >
   <div class="background">
-  <div class="container">
-    <div class="heading">
-      <h1 class="title">Sunset</h1>
-      <!--div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">Sunset</h1>
+        <!--div class="scores-container">
+          <div class="score-container">0</div>
+          <div class="best-container">0</div>
+        </div-->
+      </div>
+
+      <!--div class="above-game">
+        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <a class="restart-button">New Game</a>
       </div-->
+      <div id="output-container">
+        <div id="location">
+        </div>
+        <div id="weather">
+        </div>
+        <div id="summary">
+        </div>
+      </div>
+
+
+      <p class="explanation">
+        <strong class="important">You need help about when going out for amazing pictures?<br>
+        </strong> Use this app to <strong>know</strong> when it's time to go.
+      </p>
     </div>
-
-    <!--div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-      <a class="restart-button">New Game</a>
-    </div-->
-    <div id="output-container">
-      <div id="location">
-      </div>
-      <div id="weather">
-      </div>
-      <div id="summary">
-      </div>
-    </div>
-
-
-    <p class="explanation">
-      <strong class="important">You need help about when going out for amazing pictures?<br>
-      </strong> Use this app to <strong>know</strong> when it's time to go.
-    </p>
   </div>
 
+  <div id="debug">
   </div>
 
   <script src="js/output.js"></script>
