@@ -29,6 +29,10 @@ function cloudCoverFunction(cloudCover) {
 }
 
 function humidityFunction(humidity) {
+	return 0.8 + 0.2 * humidity;
+}
+
+function temperatureFunction(temperature) {
 	return 1.0;
 }
 
@@ -37,12 +41,14 @@ function process(data) {
 	score = 0.0;
 
 	// define a set of features, each feature weights at most 1
-	features = 2;
+	features = 3;
 	cloudCover = data.currently.cloudCover;
 	humidity = data.currently.humidity;
+	temperature = data.currently.temperature;
 
 	score += cloudCoverFunction(cloudCover);
 	score += humidityFunction(humidity);
+	score += temperatureFunction(temperature);
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;
 
