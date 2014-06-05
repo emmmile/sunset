@@ -23,31 +23,31 @@ function handlePosition(position) {
 }
 
 function showError(error) {
+    var message;
+
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
+            message = "User denied the request for Geolocation."
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
+            message = "Location information is unavailable."
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
+            message = "The request to get user location timed out."
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
+            message = "An unknown error occurred."
             break;
     }
 
-    x.innerHTML += "<br>" + "So maybe you want to enter something manually:" +
-    "<form id=\"locationForm\" action=\"\" method=\"post\">" +
-      "<input type=\"text\" id=\"userLocation\">" +
-      "<input type=\"submit\" onClick=\"return resolveUserLocation()\">" +
-    "</form>";
+    document.getElementById('user-location-label').innerHTML = 'There was an error getting the location. Enter something yourself:';
+    document.getElementById('user-location-container').style.display= 'block';
+
     // http://maps.google.com/maps/api/geocode/json?address=Lucca&sensor=false
 }
 
 function resolveUserLocation() {
-    var userLocation = $('#userLocation').val()
+    var userLocation = $('#user-location').val();
     alert("You entered '" + userLocation + "'. I'm working on it.");
 
 

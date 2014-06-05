@@ -8,4 +8,6 @@ function output(data, situation) {
 
 	el = document.getElementById("summary");
 	el.innerHTML = "Conditions are<br><strong class=\"important\">" + situation + ".</strong><br>";
+
+    document.getElementById('summary').style.display= 'block';
 }

@@ -33,6 +33,13 @@
       <div id="output-container">
         <div id="location">
         </div>
+        <div id="user-location-container">
+          <p id="user-location-label"></p>
+          <form id="locationForm" action="" method="post">
+            <input type="text" id="user-location">
+            <input type="submit" onClick="return resolveUserLocation()">
+          </form>
+        </div>
         <div id="weather">
         </div>
         <div id="summary">
