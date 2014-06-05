@@ -8,28 +8,14 @@ var conditions = [
 
 function request(latitude, longitude) {
 	var uri = "https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
-	alert( uri );
+	//var uri = "https://raw.githubusercontent.com/emmmile/sunset/gh-pages/js/example.json";
+	document.getElementById("debug").innerHTML += uri;
 
-	var request;
-	if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-	    request = new XMLHttpRequest();
-	} else { // code for IE6, IE5
-	    request = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	/* in case of async: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests
-	request.onreadystatechange = function() {
-	    if (request.readyState == 4 && request.status == 200) {
-	        process(request.responseText);
-	    }
-	}*/
-
-	request.open("GET", uri, false); // false = sync, true = async
-
-	if ( request.status == 200 ) {
-		process(request.responseText);
-	} else {
-		document.getElementById("debug").innerHTML = request.responseText;
-	}
+	jQuery.get(uri, function( data ) {
+	  $( ".result" ).html( data );
+	  process(null);
+	  alert( "Load was performed." );
+	});
 }
 
 function cloudCoverFunction(cloudCover) {
