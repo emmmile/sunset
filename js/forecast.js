@@ -11,11 +11,9 @@ function request(latitude, longitude) {
 	//var uri = "js/example.json";
 	document.getElementById("debug").innerHTML += uri;
 
-	jQuery.get(uri, function( data ) {
-		$( ".result" ).html( data );
-		process(null);
-		alert( "Load was performed." );
-	});
+	$.getJSON('https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/' + latitude + ',' + longitude + "?callback=?", function(data1) {
+        console.log(data1.currently.summary);
+    });
 }
 
 function cloudCoverFunction(cloudCover) {
