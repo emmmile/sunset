@@ -1,8 +1,11 @@
 
 // main entrypoint
 function main() {
-	getLocation();
-	request();
-	process();
-	output();
+	output(
+		process(
+			request(
+				getLocation()
+			)
+		)
+	);
 }

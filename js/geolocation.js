@@ -2,7 +2,7 @@ var x = document.getElementById("location");
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition,showError);
+        return navigator.geolocation.getCurrentPosition(showPosition,showError);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
         // TODO: get the location in some other way, e.g. from a text box
@@ -13,9 +13,7 @@ function showPosition(position) {
     x.innerHTML = 
     "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude +
-    "<br>Accuracy: " + position.coords.accuracy +
-    "<br>Altitude: " + position.coords.altitude +
-    "<br>Altitude accuracy: " + position.coords.altitudeAccuracy;
+    "<br>Accuracy: " + position.coords.accuracy;
 }
 
 function showError(error) {

@@ -1,7 +1,12 @@
+var conditions = [
+	"awful"
+	"bad"
+	"fair"
+	"good"
+	"excellent"
+];
 
-var data;
-
-function request() {
+function request(location) {
 	var uri = "js/example.json";
 
 	var request;
@@ -21,12 +26,43 @@ function request() {
 	request.send();
 
 	if ( request.status == 200 ) {
-		data = request.responseText;
+		return request.responseText;
+	} else {
+		// TODO
+		return "error";
 	}
 }
 
-function process() {
+function cloudCoverFunction(cloudCover) {
+	b = 0.4; 		// maximum score is when cloudCover is?
+	a = 0.25;		// score at cloudCover 0
+	c = 1;			// score at cloudCover 1
+
+	C = a;
+	B = (1 - a + a * b * b) / (b - b * b);
+	A = -a - B;
+
+	return A * cloudCover * cloudCover + B * cloudCover + C;
+}
+
+function humidityFunction(humidity) {
+	return 1.0;
+}
+
+function process(data) {
 	data = JSON.parse(data);
 
-	// process the data
+	score = 0.0;
+
+	// define a set of features, each feature weights at most 1
+	features = 2;
+	cloudCover = data['currently']['cloudCover'];
+	humidity = data['currently']['humidity'];
+
+	score += cloudCoverFunction(cloudCover);
+	score += humidityFunction(humidity);
+	score /= features;
+	index = (score * conditions.length) | 0;
+
+	return conditions[index];
 }
