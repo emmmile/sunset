@@ -64,6 +64,7 @@ function process() {
 	score += humidityFunction(humidity);
 	score /= features;
 	index = (score * conditions.length) | 0;
+	alert( "" + index );
 
 	situation = "good";
 }
