@@ -6,5 +6,5 @@ function output(data, situation) {
 	"<br>Humidity: " + data['currently']['humidity'];
 
 	el = document.getElementById("summary");
-	el.innerHTML = "Conditions are<br><strong>" + situation + ".</strong><br>";
+	el.innerHTML = "Conditions are<br><strong class=\"important\">" + situation + ".</strong><br>";
 }

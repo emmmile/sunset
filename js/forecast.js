@@ -7,9 +7,9 @@ var conditions = [
 ];
 
 function request(latitude, longitude) {
-	var uri = "https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
+	//var uri = "https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/" + latitude + "," + longitude;
 	//var uri = "js/example.json";
-	document.getElementById("debug").innerHTML += uri;
+	//document.getElementById("debug").innerHTML += uri;
 
 	$.getJSON('https://api.forecast.io/forecast/07b1f5c9692aa58c2625794bebef237a/' + latitude + ',' + longitude + "?callback=?", function(data) {
     	process(data);
@@ -33,7 +33,7 @@ function humidityFunction(humidity) {
 }
 
 function process(data) {
-	document.getElementById("debug").innerHTML += "<br>" + JSON.stringify(data);
+	//document.getElementById("debug").innerHTML += "<br>" + JSON.stringify(data);
 	score = 0.0;
 
 	// define a set of features, each feature weights at most 1
