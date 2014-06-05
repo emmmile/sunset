@@ -1,25 +1,21 @@
 var x = document.getElementById("location");
 
-var latitude = "global";
-var longitude = "global";
-
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition,showError);
+        navigator.geolocation.getCurrentPosition(handlePosition,showError);
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
         // TODO: get the location in some other way, e.g. from a text box
     }
 }
 
-function showPosition(position) {
+function handlePosition(position) {
     x.innerHTML = 
     "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude +
     "<br>Accuracy: " + position.coords.accuracy;
 
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
+    request(position.coords.latitude, position.coords.longitude);
 }
 
 function showError(error) {

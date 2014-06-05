@@ -1,5 +1,3 @@
-var data;
-
 var conditions = [
 	"awful",
 	"bad",
@@ -29,7 +27,7 @@ function request() {
 	request.open("GET", uri, false); // false = sync, true = async
 
 	if ( request.status == 200 ) {
-		data = request.responseText;
+		process(request.responseText);
 	}
 }
 
@@ -49,7 +47,7 @@ function humidityFunction(humidity) {
 	return 1.0;
 }
 
-function process() {
+function process(data) {
 	data = JSON.parse(data);
 
 	score = 0.0;
@@ -64,5 +62,5 @@ function process() {
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;
 
-	situation = conditions[index];
+	output(conditions[index]);
 }
