@@ -1,16 +1,16 @@
 var data;
 
 var conditions = [
-	"awful"
-	"bad"
-	"fair"
-	"good"
+	"awful",
+	"bad",
+	"fair",
+	"good",
 	"excellent"
 ];
 
 var situation;
 
-function request(location) {
+function request() {
 	var uri = "js/example.json";
 
 	var request;
