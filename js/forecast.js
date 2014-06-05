@@ -33,8 +33,7 @@ function humidityFunction(humidity) {
 }
 
 function process(data) {
-	alert(data);
-
+	document.getElementById("debug").innerHTML += "<br>" + JSON.stringify(data);
 	score = 0.0;
 
 	// define a set of features, each feature weights at most 1
