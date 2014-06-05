@@ -20,7 +20,7 @@ function handlePosition(position) {
     "<br>Longitude: " + position.coords.longitude +
     "<br>Accuracy: " + a + accuracyString;
 
-    if ( accuracy > 20000 ); // ask to the user
+    //if ( accuracy > 20000 ); // ask to the user
 
     request(position.coords.latitude, position.coords.longitude);
 }
@@ -65,7 +65,7 @@ function resolveLocationFromUser() {
         }
     });
 
-    // $.get('https://maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
+    // $.console('https://maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
     //     alert(data);
     // });
 }
