@@ -63,8 +63,7 @@ function process() {
 	score += cloudCoverFunction(cloudCover);
 	score += humidityFunction(humidity);
 	score /= features;
-	index = (score * conditions.length) | 0;
-	alert( "" + index );
+	index = (score * (conditions.length - 1)) | 0;
 
-	situation = "good";
+	situation = conditions[index];
 }
