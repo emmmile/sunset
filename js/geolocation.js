@@ -55,13 +55,26 @@ function resolveLocationFromUser() {
     var userLocation = $('#user-location').val();
     alert("You entered \"" + userLocation + "\". I'm working on it.");
 
-    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation, function(data) {
+    $.ajax({
+        type: 'POST',
+        dataType: "json",
+        url: 'http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation,
+        success: function(data) {
+            console.log(data.results[0].geometry.location.lat);
+            console.log(data.results[0].geometry.location.lng);
+            alert(data.results[0].geometry.location);
+
+            request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+        }
+    });
+
+    /*$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation, function(data) {
         console.log(data.results[0].geometry.location.lat);
         console.log(data.results[0].geometry.location.lng);
         alert(data.results[0].geometry.location);
 
         request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
-    });
+    });*/
 
     /*gapi.client.setApiKey(YOUR API KEY);
     geocoder = new google.maps.Geocoder();
