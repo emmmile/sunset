@@ -56,6 +56,7 @@ function resolveLocationFromUser() {
 
     //gapi.client.setApiKey(YOUR API KEY);
     geocoder = new google.maps.Geocoder();
+    alert("after geocoder..." + geocoder );
 
     gecoder.geocode({'address': userLocation}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
