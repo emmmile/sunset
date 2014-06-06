@@ -60,8 +60,10 @@ function resolveLocationFromUser() {
 
     geocoder.geocode({'address': userLocation}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            console.log(results[0].geometry.location[0]);
-            console.log(results[0].geometry.location[1]);
+            console.log(results[0].geometry.location.A);
+            console.log(results[0].geometry.location.k);
+
+            request(results[0].geometry.location.A, results[0].geometry.location.k);
         } else {
             console.log(status);
         }
