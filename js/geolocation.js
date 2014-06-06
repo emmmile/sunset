@@ -17,14 +17,14 @@ function displayLocation(latitude, longitude, accuracy) {
 
     document.getElementById("location").innerHTML = 
     "Latitude: " + latitude +
-    "<br>Longitude: " + longitude +
-    "<br>Accuracy: " + a + accuracyString;
+    "<br>Longitude: " + longitude + ((accuracy != 0) ?
+    ("<br>Accuracy: " + a + accuracyString) : "");
 }
 
 function handlePosition(position) {
 	displayLocation(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
 
-    request(position.coords.latitude, position.coords.longitude);
+    request(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
 }
 
 function showError(error) {
@@ -62,7 +62,7 @@ function resolveLocationFromUser() {
         success: function(data) {
             latitude = data.results[0].geometry.location.lat;
             longitude = data.results[0].geometry.location.lng;
-            accuracy = 10000;
+            accuracy = 0;
 
             console.log(latitude);
             console.log(longitude);

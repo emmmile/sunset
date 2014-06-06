@@ -137,8 +137,10 @@ hr {
   border-radius: 10px;
 }
 
-#summary strong {
+#situation {
   font-size: 64px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 input[type=text] {
