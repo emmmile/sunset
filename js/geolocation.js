@@ -60,15 +60,12 @@ function resolveLocationFromUser() {
 
     geocoder.geocode({'address': userLocation}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-            alert(results[0].geometry.location);
+            console.log(results[0].geometry.location[0]);
+            console.log(results[0].geometry.location[1]);
         } else {
-            alert("Geocode was not successful for the following reason: " + status);
+            console.log(status);
         }
     });
-
-    // $.console('https://maps.google.com/maps/api/geocode/json?address=' + userLocation + '&sensor=false', function(data) {
-    //     alert(data);
-    // });
 }
 
 window.onload = function () { getLocation(); }
