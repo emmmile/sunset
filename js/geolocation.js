@@ -1,5 +1,6 @@
 var x = document.getElementById("location");
 var errorMessage;
+var geocoder;
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -56,9 +57,8 @@ function resolveLocationFromUser() {
 
     //gapi.client.setApiKey(YOUR API KEY);
     geocoder = new google.maps.Geocoder();
-    alert("after geocoder..." + geocoder );
 
-    gecoder.geocode({'address': userLocation}, function(results, status) {
+    geocoder.geocode({'address': userLocation}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             alert(results[0].geometry.location);
         } else {
