@@ -16,7 +16,12 @@ function request(latitude, longitude) {
     });
 }
 
+// ogni parametro dovrebbe essere pesato, es. clouds sono piu' importanti
+// pesare i parametri singoli e' riduttivo. Sarebbe meglio andare a coppie opppure prendere tutto insieme.
+
 function cloudCoverFunction(cloudCover) {
+	cloudCover *= cloudCover; // because the number seems to be a lot higher than actually is
+
 	b = 0.4; 		// maximum score is when cloudCover is?
 	a = 0.25;		// score at cloudCover 0
 	c = 1;			// score at cloudCover 1
@@ -29,11 +34,11 @@ function cloudCoverFunction(cloudCover) {
 }
 
 function humidityFunction(humidity) {
-	return 0.8 + 0.2 * humidity;
+	return 0.8 + 0.2 * humidity; // humidity doesn't really matters
 }
 
 function temperatureFunction(temperature) {
-	return 1.0;
+	return 1.0; // temperature doesn't matters at all
 }
 
 function process(data) {
