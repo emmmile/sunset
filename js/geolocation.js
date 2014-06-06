@@ -53,7 +53,23 @@ function getLocationFromUser(message) {
 
 function resolveLocationFromUser() {
     var userLocation = $('#user-location').val();
-    alert("You entered \"" + userLocation + "\". I'm working on it.");
+    //alert("You entered \"" + userLocation + "\". I'm working on it.");
+
+    /*$.get('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation,
+        function(data) {
+            console.log(data.results[0].geometry.location.lat);
+            console.log(data.results[0].geometry.location.lng);
+            alert(data.results[0].geometry.location);
+
+            request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+    });*/
+
+    /*$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation, function(data) {
+        console.log(data.results[0].geometry.location.lat);
+        console.log(data.results[0].geometry.location.lng);
+
+        request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+    });*/
 
     $.ajax({
         type: 'POST',
@@ -67,14 +83,6 @@ function resolveLocationFromUser() {
             request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
         }
     });
-
-    /*$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation, function(data) {
-        console.log(data.results[0].geometry.location.lat);
-        console.log(data.results[0].geometry.location.lng);
-        alert(data.results[0].geometry.location);
-
-        request(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
-    });*/
 
     /*gapi.client.setApiKey(YOUR API KEY);
     geocoder = new google.maps.Geocoder();

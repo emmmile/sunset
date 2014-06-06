@@ -56,7 +56,6 @@ function process(data) {
 	score += temperatureFunction(temperature);
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;
-	alert(index);
 
 	output(data, conditions[index]);
 }
