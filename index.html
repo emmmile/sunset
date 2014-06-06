@@ -33,14 +33,14 @@
         <a class="restart-button">New Game</a>
       </div-->
       <div id="output-container">
-        <div id="location">
-        </div>
         <div id="user-location-container">
           <p id="user-location-label"></p>
           <form id="locationForm" method="post">
             <input type="text" id="user-location">
-            <input type="submit" onClick="return resolveLocationFromUser()">
+            <button type="button" onClick="return resolveLocationFromUser()">Submit</button>
           </form>
+        </div>
+        <div id="location">
         </div>
         <div id="weather">
         </div>
