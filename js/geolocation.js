@@ -55,6 +55,11 @@ function resolveLocationFromUser() {
     var userLocation = $('#user-location').val();
     alert("You entered \"" + userLocation + "\". I'm working on it.");
 
+
+    $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + userLocation, function(data) {
+        console.log(data);
+    });
+
     //gapi.client.setApiKey(YOUR API KEY);
     geocoder = new google.maps.Geocoder();
 
