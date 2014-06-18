@@ -38,19 +38,31 @@ function humidityFunction(humidity) {
 function process(data) {
 	if (! data.daily.data[0].sunsetTime) {
 		sunsetTime = null;
+		datapoint = data.currently; // TODO
 	} else {
-		sunsetTime = new Date(data.daily.data[0].sunsetTime * 1000);
+		sunsetTime = data.daily.data[0].sunsetTime;
+
+		best = 0;
+		for(var i = 0; i < data.hourly.data.length; i++) {
+			if ( Math.abs(data.hourly.data[i].time - data.hourly.data[best].time) <
+			     Math.abs(data.hourly.data[i].time - sunsetTime) )
+				best = i;
+		}
+
+		console.log("Datapoint " + data.hourly.data[best].time + 
+			"(" + format(new Date(data.hourly.data[best].time * 1000)) + ") is the closest to sunset time.");
+		sunsetTime = new Date(sunsetTime * 1000); // seconds
+		datapoint = data.hourly.data[best];
 	}
 
-	score = 0.0;
-	datapoint = data.currently;
-
 	// define a set of features, each feature weights at most 1
+	score = 0.0;
 	features = 3;
 	cloudCover = datapoint.cloudCover;
 	humidity = datapoint.humidity;
 	temperature = datapoint.temperature;
 	precipProbability = datapoint.precipProbability;
+	apparentTemperature = datapoint.apparentTemperature;
 
 
 	score += cloudCoverFunction(cloudCover, 0.2, 0.4);
@@ -60,11 +72,6 @@ function process(data) {
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;
 
-	output({
-		"summary": datapoint.summary,
-		"cloudCover": cloudCover,
-		"temperature": temperature,
-		"sunsetTime": sunsetTime,
-		"score": score
-	}, conditions[index]);
+	datapoint.sunsetTime = sunsetTime;
+	output(datapoint, conditions[index]);
 }

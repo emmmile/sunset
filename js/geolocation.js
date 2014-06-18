@@ -13,12 +13,12 @@ function getLocation() {
 function displayLocation(latitude, longitude, accuracy) {
     a = accuracy;
     accuracyString = (a >= 1000) ? "km" : "m";
-    a = Math.round(((a >= 1000) ? a / 1000 : a)*100) / 100;
+    a = round(((a >= 1000) ? a / 1000 : a), 2);
 
     document.getElementById("location").innerHTML = 
-    "Latitude: " + latitude +
-    "<br>Longitude: " + longitude + ((accuracy != 0) ?
-    ("<br>Accuracy: " + a + accuracyString) : "");
+    "Latitude: " + round(latitude, 8) +
+    "<br>Longitude: " + round(longitude, 8) + 
+    ((accuracy != 0) ? ("<br>Accuracy: " + a + accuracyString) : "");
 }
 
 function handlePosition(position) {
@@ -64,8 +64,6 @@ function resolveLocationFromUser() {
             longitude = data.results[0].geometry.location.lng;
             accuracy = 0;
 
-            console.log(latitude);
-            console.log(longitude);
             displayLocation(latitude, longitude, accuracy);
 
             request(latitude, longitude);
