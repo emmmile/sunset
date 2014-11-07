@@ -42,8 +42,8 @@ function process(data) {
 	score += cloudCoverFunction(precipProbability, 0.5, 0.2);
 
 	score /= features;
-	index = (score * (conditions.length - 1)) | 0;
+	index = (score * (conditions.length - 1)) | 0;*/
 
-	datapoint.sunsetTime = sunsetTime;*/
+	datapoint.sunsetTime = sunsetTime;
 	output(datapoint);
 }
