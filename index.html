@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Sunset</title>
+  <title>Weather</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <!--link rel="shortcut icon" href="favicon.ico"-->
@@ -15,26 +15,17 @@
 
   <script src="js/jquery.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-  <!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPPy7gyyVLoJkKhPOdM9Z_5vqvKCRCoaM"></script-->
 </head>
 <body>
   <div class="background">
     <div class="container">
       <div class="heading">
-        <h1 class="title">Sunset</h1>
-        <!--div class="scores-container">
-          <div class="score-container">0</div>
-          <div class="best-container">0</div>
-        </div-->
+        <h1 class="title">Weather</h1>
       </div>
 
-      <!--div class="above-game">
-        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-        <a class="restart-button">New Game</a>
-      </div-->
       <div id="output-container">
         <div id="user-location-container">
-          <p id="user-location-label"></p>
+          <p id="user-location-label">The shown information is not what you meant? Enter something yourself:</p>
           <form id="locationForm" method="post">
             <input type="text" id="user-location">
             <button type="button" onClick="return resolveLocationFromUser()">Submit</button>
@@ -44,26 +35,22 @@
         </div>
         <div id="weather">
         </div>
-        <div id="summary">
-          <p>Conditions are</p>
-          <div id="situation"><strong class="important"></strong></div>
-        </div>
       </div>
 
 
-      <p class="explanation">
+      <!--p class="explanation">
         <strong class="important">You need help about the timing for taking amazing pictures?<br>
         </strong> Use this app to <strong>know</strong> when it's time to go.
-      </p>
+      </p-->
     </div>
   </div>
 
   <div id="debug">
   </div>
-
-  <script src="js/utils.js"></script>
-  <script src="js/output.js"></script>
-  <script src="js/forecast.js"></script>
-  <script src="js/geolocation.js"></script>
 </body>
+
+<script src="js/utils.js"></script>
+<script src="js/output.js"></script>
+<script src="js/forecast.js"></script>
+<script src="js/geolocation.js"></script>
 </html>

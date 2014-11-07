@@ -7,9 +7,4 @@ function output(data, situation) {
 	"<br>Sunset time: " + (data.sunsetTime == null ? "NA" : (format(data.sunsetTime) +
 						  ((data.sunsetTime.getDay() != (new Date().getDay())) ? " (tomorrow)" : "")));
 
-	el = document.getElementById("situation");
-	el.innerHTML = //round(data.score, 2) + ": " + 
-				   situation;
-
-    document.getElementById('summary').style.display= 'block';
 }
