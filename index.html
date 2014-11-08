@@ -28,7 +28,7 @@
         <div id="user-location-container">
           <p id="user-location-label">This is not what you meant? Enter something yourself:</p>
           <form id="locationForm" method="post">
-            <input type="text" id="user-location" onkeydown="if (event.keyCode == 13) document.getElementById('go').click()">
+            <input type="text" id="user-location" onkeydown="if (event.keyCode == 13) { resolveLocationFromUser(); return false; }">
             <button type="button" id="go" onClick="return resolveLocationFromUser()">Submit</button>
           </form>
         </div>
