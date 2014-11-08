@@ -43,7 +43,7 @@ function addItem ( time, data, elementId) {
 		createRow(row, 
 			format(new Date(datapoint.time * 1000)), 
 			"<i class=\"wi " + icons[datapoint.icon] + "\"></i>", datapoint.summary, 
-			round((datapoint.temperature - 32.0) * 5 / 9, 1) + "°C", 
+			round((datapoint.temperature - 32.0) * 5 / 9, 1), // + "°C", 
 			round(datapoint.cloudCover * 100, 2) + "%");
 
 		console.log(datapoint.icon);
@@ -51,7 +51,7 @@ function addItem ( time, data, elementId) {
 
 	var header = table.createTHead();
 	var hrow    = header.insertRow(0);
-	createRow(hrow, "Time", "Icon", "Summary", "Temperature", "Cloud Cover");
+	createRow(hrow, "Time", "Icon", "Summary", "°C", "Clouds");
 
 	el.innerHTML = "";
 	el.appendChild(itemStr);
