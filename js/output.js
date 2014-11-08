@@ -28,11 +28,12 @@ function createRow(row, time, icon, summary, temp, cloud) {
 }
 
 function addItem ( time, data, elementId) {
-	var el = document.getElementById(elementId);
+	var father = document.getElementById("weather");
+	var el = document.createElement("div");
 	var itemStr = document.createElement("p");
 	itemStr.className = "important";
-	itemStr.innerHTML = elementId + " time: " + (time == null ? "NA" : (format(time) +
-						  ((time.getDay() != (new Date().getDay())) ? " (tomorrow)" : "")));
+	itemStr.innerHTML = elementId + " time: " + (time == null ? "NA" : (format(time) + " (" +
+						  new Date().getDay() + "/" + new Date().getMonth() + ")"));
 
 	var table  = document.createElement("TABLE");
 
@@ -53,15 +54,23 @@ function addItem ( time, data, elementId) {
 	var hrow    = header.insertRow(0);
 	createRow(hrow, "Time", "Icon", "Summary", "°C", "Clouds");
 
+	el.id = elementId;
 	el.innerHTML = "";
 	el.appendChild(itemStr);
 	el.appendChild(table);
 	el.style.display = "block";
+	father.appendChild(el);
 }
 
 
-function output(sunset, sunsetData, sunrise, sunriseData) {
-	addItem(sunset, sunsetData, "sunset");
-	if ( sunrise != null)
-		addItem(sunrise, sunriseData, "sunrise");
+function output(data) {
+	var father = document.getElementById("weather");
+	father.innerHTML = "";
+	if ( data.sunset < data.sunrise ) {
+		addItem(data.sunset, data.sunsetData, "sunset");
+		addItem(data.sunrise, data.sunriseData, "sunrise");
+	} else {
+		addItem(data.sunrise, data.sunriseData, "sunrise");
+		addItem(data.sunset, data.sunsetData, "sunset");
+	}
 }

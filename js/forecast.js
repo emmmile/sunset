@@ -41,9 +41,9 @@ function process(data) {
 		} else {
 			// sunset is in the future, what about the sunrise?
 			if ( sunriseTime < data.hourly.data[0].time ) {
-				sunriseTime = null;
-				sunset = null;
-				console.log("Not displaying sunrise, since in the past");
+				sunriseTime = data.daily.data[1].sunriseTime;
+				sunrise = new Date(sunriseTime * 1000);
+				console.log("Choosing next sunrise: " + sunrise );
 			}
 		}
 
@@ -51,11 +51,9 @@ function process(data) {
 		left = Math.max(0, sunsetIndex - 1);
 		sunsetData = data.hourly.data.slice(left, left + 3);
 
-		if ( sunriseTime != null ) {
-			sunriseIndex = findBestIndex(data, sunriseTime);
-			left = Math.max(0, sunriseIndex - 1);
-			sunriseData = data.hourly.data.slice(left, left + 3);
-		}
+		sunriseIndex = findBestIndex(data, sunriseTime);
+		left = Math.max(0, sunriseIndex - 1);
+		sunriseData = data.hourly.data.slice(left, left + 3);
 	}
 
 	// define a set of features, each feature weights at most 1
@@ -75,5 +73,11 @@ function process(data) {
 	score /= features;
 	index = (score * (conditions.length - 1)) | 0;*/
 
-	output(sunset, sunsetData, sunrise, sunriseData);
+	data = {
+		"sunrise": sunrise,
+		"sunriseData": sunriseData,
+		"sunset": sunset,
+		"sunsetData": sunsetData
+	};
+	output(data);
 }
