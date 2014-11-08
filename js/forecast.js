@@ -38,13 +38,12 @@ function process(data) {
 			sunsetTime = data.daily.data[1].sunsetTime;
 			sunset = new Date(sunsetTime * 1000);
 			console.log("Choosing next sunset: " + sunset );
-		} else {
-			// sunset is in the future, what about the sunrise?
-			if ( sunriseTime < data.hourly.data[0].time ) {
-				sunriseTime = data.daily.data[1].sunriseTime;
-				sunrise = new Date(sunriseTime * 1000);
-				console.log("Choosing next sunrise: " + sunrise );
-			}
+		}
+		
+		if ( sunriseTime < data.hourly.data[0].time ) {
+			sunriseTime = data.daily.data[1].sunriseTime;
+			sunrise = new Date(sunriseTime * 1000);
+			console.log("Choosing next sunrise: " + sunrise );
 		}
 
 		sunsetIndex = findBestIndex(data, sunsetTime);

@@ -32,8 +32,9 @@ function addItem ( time, data, elementId) {
 	var el = document.createElement("div");
 	var itemStr = document.createElement("p");
 	itemStr.className = "important";
+	console.log(time);
 	itemStr.innerHTML = elementId + " time: " + (time == null ? "NA" : (format(time) + " (" +
-						  new Date().getDay() + "/" + new Date().getMonth() + ")"));
+						  time.getDate() + "/" + (time.getMonth()+1) + ")"));
 
 	var table  = document.createElement("TABLE");
 
