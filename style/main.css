@@ -106,6 +106,7 @@ p {
 
 p.important {
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 a {
