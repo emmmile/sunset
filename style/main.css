@@ -209,11 +209,11 @@ tr:first-child {
     width: 320px;
     margin: 0 auto; }
 
-  .restart-button {
-    width: 42%;
-    padding: 0;
-    display: block;
-    box-sizing: border-box;
-    margin-top: 2px;
+  button[type=button] {
+    padding:5px 10px;
+  }
+  
+  input[type=text] {
+    width: 200px;
   }
 }
