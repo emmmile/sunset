@@ -13,50 +13,55 @@ var icons = {
 	"partly-cloudy-night": "wi-night-cloudy"
 };
 
+function createRow(row, time, icon, summary, temp, cloud) {
+	var timec =    row.insertCell(0)
+	var iconc =    row.insertCell(1);
+	var summaryc = row.insertCell(2);
+	var tempc =    row.insertCell(3);
+	var cloudc =   row.insertCell(4);
 
-function output(data, situation) {
-	var el = document.getElementById("weather");
-	/*el.innerHTML = "Summary: <strong>" + data.summary + "</strong>" +
-	"<br><i class=\"wi wi-day-lightning\"></i>" +
-	"<br>Cloud cover: " + round(data.cloudCover * 100, 2) + "%" +
-	"<br>Temperature: " + round((data.temperature - 32.0) * 5 / 9, 1) + "°C" + 
-	"<br>Sunset time: " + (data.sunsetTime == null ? "NA" : (format(data.sunsetTime) +
-						  ((data.sunsetTime.getDay() != (new Date().getDay())) ? " (tomorrow)" : "")));*/
-	el.innerHTML = "Sunset time: " + (data.sunsetTime == null ? "NA" : (format(data.sunsetTime) +
-						  ((data.sunsetTime.getDay() != (new Date().getDay())) ? " (tomorrow)" : "")));
+	timec.innerHTML    = time;
+	iconc.innerHTML    = icon;
+	summaryc.innerHTML = summary;
+	tempc.innerHTML    = temp;
+	cloudc.innerHTML   = cloud;
+}
 
-	// TODO for every data point...
-	// Map icon into icons :)
+function addItem ( time, data, elementId) {
+	var el = document.getElementById(elementId);
+	var itemStr = document.createElement("p");
+	itemStr.className = "important";
+	itemStr.innerHTML = elementId + " time: " + (time == null ? "NA" : (format(time) +
+						  ((time.getDay() != (new Date().getDay())) ? " (tomorrow)" : "")));
 
-	table = document.createElement("TABLE");
-	header = table.createTHead();
-	row =     header.insertRow(0);
-	time =    row.insertCell(0)
-	icon =    row.insertCell(1);
-	summary = row.insertCell(2);
-	temp =    row.insertCell(3);
-	cloud =   row.insertCell(4);
+	var table  = document.createElement("TABLE");
 
-	time.innerHTML    = "Time";
-	icon.innerHTML    = "Icon";
-	summary.innerHTML = "Summary";
-	temp.innerHTML    = "Temperature";
-	cloud.innerHTML   = "Cloud Cover";
+	for ( i = 0; i < data.length; ++i ) {
+		var datapoint = data[i];
 
-	row =     table.insertRow(1);
-	time =    row.insertCell(0)
-	icon =    row.insertCell(1);
-	summary = row.insertCell(2);
-	temp =    row.insertCell(3);
-	cloud =   row.insertCell(4);
+		var row = table.insertRow();
+		createRow(row, 
+			format(new Date(datapoint.time * 1000)), 
+			"<i class=\"wi " + icons[datapoint.icon] + "\"></i>", datapoint.summary, 
+			round((datapoint.temperature - 32.0) * 5 / 9, 1) + "°C", 
+			round(datapoint.cloudCover * 100, 2) + "%");
 
-	time.innerHTML    = format(new Date(data.time * 1000));
-	icon.innerHTML    = "<i class=\"wi " + icons[data.icon] + "\"></i>";
-	summary.innerHTML = data.summary;
-	temp.innerHTML    = round((data.temperature - 32.0) * 5 / 9, 1) + "°C";
-	cloud.innerHTML   = round(data.cloudCover * 100, 2) + "%";
+		console.log(datapoint.icon);
+	}
 
-	console.log(data.icon);
+	var header = table.createTHead();
+	var hrow    = header.insertRow(0);
+	createRow(hrow, "Time", "Icon", "Summary", "Temperature", "Cloud Cover");
 
+	el.innerHTML = "";
+	el.appendChild(itemStr);
 	el.appendChild(table);
+	el.style.display = "block";
+}
+
+
+function output(sunset, sunsetData, sunrise, sunriseData) {
+	addItem(sunset, sunsetData, "sunset");
+	if ( sunrise != null)
+		addItem(sunrise, sunriseData, "sunrise");
 }
