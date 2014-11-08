@@ -19,7 +19,7 @@ function displayLocation(latitude, longitude, accuracy, name) {
     ((name != null) ? name + "<br>" : "<br>") +
     "Latitude: " + round(latitude, 8) +
     "<br>Longitude: " + round(longitude, 8) + 
-    ((accuracy != 0) ? ("<br>Accuracy: " + a + accuracyString) : "");
+    ((accuracy != 0) ? ("<br>GPS Accuracy: " + a + accuracyString) : "");
 }
 
 function handlePosition(position) {
