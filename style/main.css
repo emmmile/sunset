@@ -31,6 +31,7 @@ table {
   text-align:center;
     margin-left:auto; 
     margin-right:auto;
+    width: 95%;
 }
 
 body {
@@ -124,7 +125,8 @@ hr {
 
 .container {
   width: 600px;
-  margin: 0 auto; }
+  margin: 0 auto; 
+}
 
 .restart-button {
   display: inline-block;
@@ -180,6 +182,10 @@ tr:first-child {
   -webkit-border-radius: 5px;
   border: 1px solid #aaa;
   background-color: #eee;
+}
+
+#output-container {
+  margin-bottom: 30px;
 }
 
 #user-location-container {
