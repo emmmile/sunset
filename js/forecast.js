@@ -33,14 +33,16 @@ function process(data) {
 		console.log("Today sunset is/was at " + sunset);
 		console.log("Today sunrise is/was at " + sunrise);
 
+		now = new Date();
+
 		// in this case the sunset for today is already gone
-		if ( sunsetTime < data.hourly.data[0].time ) {
+		if ( sunsetTime < now.getTime() * 1000 ) {
 			sunsetTime = data.daily.data[1].sunsetTime;
 			sunset = new Date(sunsetTime * 1000);
 			console.log("Choosing next sunset: " + sunset );
 		}
 		
-		if ( sunriseTime < data.hourly.data[0].time ) {
+		if ( sunriseTime < now.getTime() * 1000 ) {
 			sunriseTime = data.daily.data[1].sunriseTime;
 			sunrise = new Date(sunriseTime * 1000);
 			console.log("Choosing next sunrise: " + sunrise );
