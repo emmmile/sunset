@@ -94,13 +94,20 @@ input[type=text] {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   padding: 5px;
+
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 input[type=text]:focus {
-  border-color: #333;
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
 }
 
 button[type=button] {
+  outline: none;
   font-size: 18px;
   margin-bottom: 20px;
   background: #bbb;
@@ -110,6 +117,18 @@ button[type=button] {
   border-radius: 5px;
   display: inline;
   padding: 5px 25px;
+
+
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button[type=button]:active { 
+  outline: none;
+  background: #9ecaed;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
 }
 
 table tr {
@@ -165,9 +184,11 @@ tr:nth-child(2) {
 
   button[type=button] {
     padding: 5px 10px;
+    font-size: 15px;
   }
 
   input[type=text] {
     width: 200px;
+    font-size: 15px;
   }
 }
