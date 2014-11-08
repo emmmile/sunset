@@ -27,6 +27,20 @@ function createRow(row, time, icon, summary, temp, cloud) {
 	cloudc.innerHTML   = cloud;
 }
 
+function createHeader(row, time, summary, temp, cloud) {
+	var timec =    row.insertCell(0)
+	var summaryc = row.insertCell(1);
+	var tempc =    row.insertCell(2);
+	var cloudc =   row.insertCell(3);
+
+	timec.innerHTML    = time;
+	summaryc.innerHTML = summary;
+	tempc.innerHTML    = temp;
+	cloudc.innerHTML   = cloud;
+
+	summaryc.colSpan = 2;
+}
+
 function addItem ( time, data, elementId) {
 	var father = document.getElementById("weather");
 	var el = document.createElement("div");
@@ -53,7 +67,7 @@ function addItem ( time, data, elementId) {
 
 	var header = table.createTHead();
 	var hrow    = header.insertRow(0);
-	createRow(hrow, "Time", "Icon", "Summary", "°C", "Clouds");
+	createHeader(hrow, "Time", "Summary", "°C", "Clouds");
 
 	el.id = elementId;
 	el.innerHTML = "";
