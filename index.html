@@ -2,9 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Sunset</title>
 
+  <title>Weather</title>
   <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link href="weather-icons/css/weather-icons.css" rel="stylesheet" type="text/css">
+
+
   <!--link rel="shortcut icon" href="favicon.ico"-->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -12,35 +15,44 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <script src="js/jquery.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </head>
-<body onload="getLocation()" >
+<body>
   <div class="background">
-  <div class="container">
-    <div class="heading">
-      <h1 class="title">Sunset</h1>
-      <!--div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div-->
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">Weather</h1>
+      </div>
+
+      <div id="output-container">
+        <div id="user-location-container">
+          <p id="user-location-label">This is not what you meant? Enter something yourself:</p>
+          <form id="locationForm" method="post">
+            <input type="text" id="user-location">
+            <button type="button" onClick="return resolveLocationFromUser()">Submit</button>
+          </form>
+        </div>
+        <div id="location">
+        </div>
+        <div id="weather">
+          <!--div id="sunrise">
+          </div>
+          <div id="sunset">
+          </div-->
+        </div>
+      </div>
     </div>
-
-    <!--div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
-      <a class="restart-button">New Game</a>
-    </div-->
-    <div id="output-container">
-    </div>
-
-
-    <hr>
-    <p class="explanation">
-      <strong class="important">You need help about when going out for amazing pictures?<br>
-      </strong> Use this app to <strong>know</strong> when it's time to go.
-    </p>
   </div>
 
+  <div id="powered">
+    Powered by <a href="http://forecast.io/">Forecast.io</a>
   </div>
-
-  <script src="js/geolocation.js"></script>
 </body>
+
+<script src="js/utils.js"></script>
+<script src="js/output.js"></script>
+<script src="js/forecast.js"></script>
+<script src="js/geolocation.js"></script>
 </html>

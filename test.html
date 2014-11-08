@@ -1,0 +1,11 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + 'Lucca', function(data) {
+        console.log(data.results[0].geometry.location.lat);
+        console.log(data.results[0].geometry.location.lng);
+});
+</script></head>
+<body></body>
+</html>
