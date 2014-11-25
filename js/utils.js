@@ -4,6 +4,7 @@ function format(date) {
 }
 
 function round(number, decimals) {
-	factor = Math.pow(10, decimals);
-	return Math.round(number * factor) / factor;
+	//factor = Math.pow(10, decimals);
+	//return Math.round(number * factor) / factor;
+	return number.toFixed(decimals);
 }

@@ -17,8 +17,8 @@ function displayLocation(latitude, longitude, accuracy, name) {
 
     document.getElementById("location").innerHTML = 
     ((name != null) ? name + "<br>" : "") +
-    "Latitude: " + round(latitude, 8) +
-    "<br>Longitude: " + round(longitude, 8) + 
+    "Latitude: " + round(latitude, 6) +
+    "<br>Longitude: " + round(longitude, 6) + 
     ((accuracy != 0) ? ("<br>GPS Accuracy: " + a + accuracyString) : "");
 }
 
